@@ -7,28 +7,41 @@ function App() {
 
   const array1 = [{
 		color: "red",
-		value: "#f00"
+		value: "#f00",
+    price:600
 	},
 	{
 		color: "green",
-		value: "#0f0"
-	}];
-
-  const array2 = [{
-		color: "blue",
-		value: "#00f"
+		value: "#0f0",
+    price:100
 	},
-	{
-		color: "cyan",
-		value: "#0ff"
-	}];
+  {
+		color: "green",
+		value: "#0f0",
+    price:300
+	},
+  {
+		color: "green",
+		value: "#0f0",
+    price:200
+	}
+  
+];
 
-  const array = array1.concat(array2);
+// let sum = 0;
+// for (const i of array1) {
+//     sum = sum + i.price;
+// }
+// console.log(sum);
+
+const ans = array1.reduce((acc,cur) =>{
+  return acc + cur.price;
+},0);
+console.log(ans);
+
 
   
 
-
-  
 
 
   return (
@@ -73,16 +86,7 @@ function App() {
           <th>color</th>
           <th>value</th>
           </tr>
-          {
-            array.map((i) => {
-              return (
-                <tr key={Math.random()}>
-                  <td>{i.color}</td>
-                  <td>{i.value}</td>
-                </tr>
-              )
-            })
-          }
+          
      </tbody>
       </table>
       
