@@ -28,23 +28,30 @@ function App() {
   
 ];
 
-// let sum = 0;
-// for (const i of array1) {
-//     sum = sum + i.price;
-// }
-// console.log(sum);
+let sum = 0;
+for (const i of array1) {
+    sum = sum + i.price;
+} 
+console.log(sum);
+
 
 const ans = array1.reduce((acc,cur) =>{
   return acc + cur.price;
 },0);
 console.log(ans);
 
+let [a,b,c] = [1,2,3,4];
+console.log(a);
 
-  
+let {name} = {
+  name: "sanket",
+  email:"sanket@gmail.com"
+}
+console.log(name);
 
 
 
-  return (
+ return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
