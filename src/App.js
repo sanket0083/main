@@ -3,22 +3,23 @@ import React, { useState } from "react"
 
 export default function App() {
 
-  // const  [ age , setage] = useState(1)
-  // const plusage = age + 1
-
-  const [valid , setvalid] = useState(true)
+  const [name , setname] = useState({
+    name : 'admin',
+    email : 'admin@gmail.com'
+  })
 
   const  btn = () => {
-    const ans = valid ? false : true
-    setvalid(ans)
-    // setage(plusage)
+    setname({
+      name : 'sanket',
+      email : 'sanket@gmail.com'
+    })
   }
     
 
   return (
     <div>
-      {/* Age is {age} <br /> */}
-      name is {valid ? 'yes' : 'no'}
+      name is {name.name} <br />
+      email is {name.email} <br />
       <button onClick={btn}>submit</button>
     </div>
   )
