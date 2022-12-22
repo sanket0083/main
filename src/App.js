@@ -4,8 +4,8 @@ import React, { useState } from "react"
 export default function App() {
 
   const [name , setname] = useState({
-    name : 'admin',
-    email : 'admin@gmail.com'
+    name : 'ravi',
+    email : 'ravi@gmail.com'
   })
 
   const  btn = () => {
