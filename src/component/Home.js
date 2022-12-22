@@ -5,7 +5,7 @@ export default class Home extends Component {
 
         return (
             <div>
-                <h1>name is {this.props.value[0].name}</h1>
+                
             </div>
         )
     }

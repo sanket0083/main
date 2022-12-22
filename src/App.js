@@ -1,28 +1,25 @@
-import './App.css';
-import Header from "./component/Header";
+import React, { useState } from "react"
 
 
-function App() {
+export default function App() {
 
-  const EmployeeData = [
-    {
-      name: "amit",
-      work: "job worker",
-      salary: "40000",
-      bonus: 1000,
-      status: true
-    },  
-  ]
+  // const  [ age , setage] = useState(1)
+  // const plusage = age + 1
+
+  const [valid , setvalid] = useState(true)
+
+  const  btn = () => {
+    const ans = valid ? false : true
+    setvalid(ans)
+    // setage(plusage)
+  }
+    
 
   return (
-    <div className="App">
-      <Header EmployeeData={EmployeeData}  
-     
-      />
-
+    <div>
+      {/* Age is {age} <br /> */}
+      name is {valid ? 'yes' : 'no'}
+      <button onClick={btn}>submit</button>
     </div>
-  );
+  )
 }
-
-     
-export default App;

@@ -1,11 +1,11 @@
 import React from 'react'
 import Home from './Home'
 
-const Header = (props) => {
+const Header = () => {
    
     return (
         <div>
-            <Home value={props.EmployeeData} />
+           
         </div>  
     )
 }
