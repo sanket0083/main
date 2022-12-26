@@ -1,19 +1,17 @@
-import React , {useState , useEffect} from 'react'
+import React, { useState, useEffect } from "react";
 
 export const App = () => {
-  const [name ,setname] = useState('sanket')
+  const [count, setcount] = useState(0);
 
-  // mounting component
-  useEffect(() => {
-    alert('savaliya');
-  },[])
+  // updating component
+  useEffect(() => {}, [count]);
 
   return (
     <div>
-
-      name is {name}
+      {count}
+      <button onClick={() => setcount(count + 1)}>submit</button>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
