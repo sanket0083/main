@@ -1,26 +1,32 @@
-import React, { useState } from "react"
+import React, { Component } from 'react'
 
-
-export default function App() {
-
-  const [name , setname] = useState({
-    name : 'ravi',
-    email : 'ravi@gmail.com'
-  })
-
-  const  btn = () => {
-    setname({
-      name : 'sanket',
-      email : 'sanket@gmail.com'
-    })
-  }
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+      this.state = {
+        name : 'sanket',
+        email : 'sanket@gmail.com',
+        student : {
+          name : 'student',
+          email : 'student@gmail.com'
+        },
+        age : 18
+      }
     
+  }
+  btn = () => {
+    this.setState({name : 'kaushik', email : 'kaushik@gmail.com'})
+  }
 
-  return (
-    <div>
-      name is {name.name} <br />
-      email is {name.email} <br />
-      <button onClick={btn}>submit</button>
-    </div>
-  )
+  render() {
+    return (
+      <div>
+        name is {this.state.name} <br />
+        name is {this.state.email} <br />
+        student name is {this.state.student.name} <br />
+        <button onClick={this.btn}>submit</button>
+        
+      </div>
+    )
+  }
 }
