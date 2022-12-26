@@ -3,8 +3,15 @@ import React, { useState, useEffect } from "react";
 export const App = () => {
   const [count, setcount] = useState(0);
 
-  // updating component
-  useEffect(() => {}, [count]);
+  // unmouting component
+  useEffect(() => {
+  
+    return() => {
+      alert('unmouting error')
+    }
+  }, []);
+
+
 
   return (
     <div>
@@ -13,5 +20,5 @@ export const App = () => {
     </div>
   );
 };
-
+  
 export default App;
