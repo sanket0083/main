@@ -1,24 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { Component } from 'react'
 
-export const App = () => {
-  const [count, setcount] = useState(0);
+export default class App extends Component {
+  componentWillMount() {
+    this.setState({count : this.state.count + 2});
+  }
+  constructor(props){
+    super(props);
+    console.log("constructor");
+    this.state = {
+      count : 1,
+    };
+  }
+ 
+  btn = () => {
+    this.setState({count : this.state.count + 2});
+  }
+  render() {
 
-  // unmouting component
-  useEffect(() => {
-  
-    return() => {
-      alert('unmouting error')
-    }
-  }, []);
-
-
-
-  return (
-    <div>
-      {count}
-      <button onClick={() => setcount(count + 1)}>submit</button>
-    </div>
-  );
-};
-  
-export default App;
+    return (
+      <div>
+      {this.state.count} <br />
+      <button onClick={this.btn}>submit</button>
+      </div>
+    )
+  }
+}
