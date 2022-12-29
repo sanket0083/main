@@ -1,28 +1,24 @@
-import React, { Component } from 'react'
+import React , {useState , useEffect} from 'react'
 
-export default class App extends Component {
+const App = () => {
 
-  componentWillMount(){
-    this.setState({count : this.state.count + 1});
-  }
-  constructor (props) {
-    super(props);
-    this.state = {
-      count : 1,
-      data : null
-    }
+  const [name, setname] = useState(true)
+
+  useEffect(() =>{
+
+  },[name])
+
+  const btn = () =>{
+    const sa = name ? false : true;
+    setname(sa);
   }
 
-  btn = () => {
-    this.setState({count : this.state.count + 1});
-  }
-  render() {
-
-    return (
-      <div>
-        {this.state.count} <br />
-        <button onClick={this.btn}>submit</button>
-      </div>
-    )
-  }
+  return (
+    <div>
+      {name ? "yes" : "no"}
+      <button onClick={btn}>submit</button>
+    </div>
+  )
 }
+
+export default App
