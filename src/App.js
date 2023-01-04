@@ -3,34 +3,37 @@ import { Link, Route, Routes } from "react-router-dom";
 import Home from "./component/Home";
 import "./App.css";
 import About from "./component/About";
-import Blog from "./component/Blog";
-
+import Header from "./component/Header";
+import Footer from "./component/Footer";
+import Contact from "./component/Contact";
+import Departments from "./component/Departments";
+import Doctors from "./component/Doctors";
+import Appointments from "./component/Appointments";
+import Layout from "./component/Layout";
+import Login from "./component/Login";
 
 const App = () => {
+ 
   return (
-    <div className="App">
-      <div className="d-flex justify-space">
-        <div>LOGO</div>
-        <div className="d-flex">
-          <div className="nav">
-            <Link to="/">Home</Link>
-          </div>
-          <div className="nav">
-            <Link to="/about">About</Link>
-          </div>
-          <div className="nav">
-            <Link to="/blog">Blog</Link>
-          </div>
-        </div>
-      </div>
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/blog" element={<Blog />} />
+    <div classname="App">
+      
+      
+      <Routes> 
+        <Route path="/" element={<Layout> <Home /> </Layout>} />
+        <Route path="/Departments" element={<Layout> <Departments /> </Layout>} />
+        <Route path="/Doctors" element={<Layout> <Doctors /> </Layout>} />
+        <Route path="/about" element={<Layout> <About /> </Layout>} />
+        <Route path="/contact" element={<Layout> <Contact /> </Layout>} />
+        <Route path="/appointments" element={ <Layout> <Appointments /> </Layout>} />
+        <Route path="/login" element={ <Layout> <Login /> </Layout>} />
       </Routes>
+      
+        
+        
     </div>
+
   );
 };
+
 
 export default App;
