@@ -1,6 +1,17 @@
 import React from "react";
 
 const Contact = () => {
+
+  const onSubmitHandler = (event) => {
+
+    event.preventDefault();
+    console.log("name : ", event.target.name.value);
+    console.log("email : ", event.target.email.value);
+    console.log("message : ", event.target.message.value);
+    console.log("subject : ", event.target.subject.value);
+
+  }
+  
   return (
     <div>
       <section id="contact" className="contact">
@@ -38,7 +49,7 @@ const Contact = () => {
               </div>
             </div>
             <div className="col-lg-8 mt-5 mt-lg-0">
-              <form action method="post" role="form" className="php-email-form">
+              <form onSubmit={onSubmitHandler}  className="php-email-form">
                 <div className="row">
                   <div className="col-md-6 form-group">
                     <input
