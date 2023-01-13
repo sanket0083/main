@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Contact = () => {
+  const [name , setname] = useState('');
+  const [email , setemail] = useState('');
+  const [message , setmessage] = useState('');
+ const [subject , setsubject] = useState('');
 
-  const onSubmitHandler = (event) => {
+const onChangename = (event)=>{
+    setname(event.target.value);
 
-    event.preventDefault();
-    console.log("name : ", event.target.name.value);
-    console.log("email : ", event.target.email.value);
-    console.log("message : ", event.target.message.value);
-    console.log("subject : ", event.target.subject.value);
+}
+const onEmailChange = (event)=>{
+  setemail(event.target.value);
+}
+const onMessageChange = (event)=>{
+  setmessage(event.target.value);
+}
+const onSubjectChange = (event)=>{
+  setsubject(event.target.value);
+}
 
-  }
+const btn = ()=>{
+  console.log(name);
+  console.log(email);
+  console.log(message);
+  console.log(subject);
+}
+
+
   
   return (
     <div>
@@ -49,10 +66,12 @@ const Contact = () => {
               </div>
             </div>
             <div className="col-lg-8 mt-5 mt-lg-0">
-              <form onSubmit={onSubmitHandler}  className="php-email-form">
+              <form   className="php-email-form">
                 <div className="row">
                   <div className="col-md-6 form-group">
                     <input
+                    value={name}
+                    onChange={onChangename}
                       type="text"
                       name="name"
                       className="form-control"
@@ -63,6 +82,8 @@ const Contact = () => {
                   </div>
                   <div className="col-md-6 form-group mt-3 mt-md-0">
                     <input
+                    value={email}
+                    onChange={onEmailChange}
                       type="email"
                       className="form-control"
                       name="email"
@@ -74,6 +95,10 @@ const Contact = () => {
                 </div>
                 <div className="form-group mt-3">
                   <input
+                  
+                  value={subject}
+                  onChange={onSubjectChange}
+
                     type="text"
                     className="form-control"
                     name="subject"
@@ -84,6 +109,9 @@ const Contact = () => {
                 </div>
                 <div className="form-group mt-3">
                   <textarea
+                  
+                  value={message}
+                  onChange={onMessageChange}
                     className="form-control"
                     name="message"
                     rows={5}
@@ -100,7 +128,7 @@ const Contact = () => {
                   </div>
                 </div>
                 <div className="text-center">
-                  <button type="submit">Send Message</button>
+                  <button onClick={btn} type="button">Send Message</button>
                 </div>
               </form>
             </div>
