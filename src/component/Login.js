@@ -1,103 +1,95 @@
-import React from 'react'
+import React from "react";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import * as yup from "yup";
 
-const Login = () => {
+function Login() {
+  const Validations = yup.object({
+    name: yup.string().required(),
+    age: yup.number().min(22).max(50).required(),
+    pass: yup
+      .string()
+      .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/, "Enter strong password")
+      .required(),
+    gender: yup.string().required(),
+    hobby: yup.array().min(1).required(),
+    country: yup.string().required(),
+    comment: yup.string().max(500).required(),
+  });
+
   return (
     <div>
-      <section id="contact" className="contact">
-        <div className="container">
-          <div className="section-title">
-            <h2>Contact</h2>
-            <p>
-              Aenean enim orci, suscipit vitae sodales ac, semper in ex. Nunc
-              aliquam eget nibh eu euismod. Donec dapibus blandit quam volutpat
-              sollicitudin. Aenean ac turpis ante. Mauris velit sapien, aliquet
-              aliquet rhoncus quis, luctus at neque. Mauris sit amet massa sed
-              orci vehicula facilisis.
-            </p>
-          </div>
-        </div>
-        <div className="container">
-          <div className="row mt-5">
-            <div className="col-lg-4">
-              <div className="info">
-                <div className="address">
-                  <i className="bi bi-geo-alt" />
-                  <h4>Location:</h4>
-                  <p> F-505, Inovative Plazza New Delhi, India</p>
-                </div>
-                <div className="email">
-                  <i className="bi bi-envelope" />
-                  <h4>Email:</h4>
-                  <p>cityhospital@example.com</p>
-                </div>
-                <div className="phone">
-                  <i className="bi bi-phone" />
-                  <h4>Call:</h4>
-                  <p>+91 9988776655</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-8 mt-5 mt-lg-0">
-              <form action method="post" role="form" className="php-email-form">
-                <div className="row">
-                  <div className="col-md-6 form-group">
-                    <input
-                      type="text"
-                      name="name"
-                      className="form-control"
-                      id="name"
-                      placeholder="Your Name"
-                      required
-                    />
-                  </div>
-                  <div className="col-md-6 form-group mt-3 mt-md-0">
-                    <input
-                      type="email"
-                      className="form-control"
-                      name="email"
-                      id="email"
-                      placeholder="Your Email"
-                      required
-                    />
-                  </div>
-                </div>
-                <div className="form-group mt-3">
-                  <input
-                    type="text"
-                    className="form-control"
-                    name="subject"
-                    id="subject"
-                    placeholder="Subject"
-                    required
-                  />
-                </div>
-                <div className="form-group mt-3">
-                  <textarea
-                    className="form-control"
-                    name="message"
-                    rows={5}
-                    placeholder="Message"
-                    required
-                    defaultValue={""}
-                  />
-                </div>
-                <div className="my-3">
-                  <div className="loading">Loading</div>
-                  <div className="error-message" />
-                  <div className="sent-message">
-                    Your message has been sent. Thank you!
-                  </div>
-                </div>
-                <div className="text-center">
-                  <button type="submit">Send Message</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Formik
+        validationSchema={Validations}
+        initialValues={{
+          name: "",
+          age: "",
+          pass: "",
+          gender: "",
+          hobby: [],
+          country: "",
+          comment: "",
+        }}
+        onSubmit={(values) => {
+          console.log(values);
+        }}
+      >
+        <Form>
+          <label>Enter name : </label>&nbsp;
+          <Field type="text" name="name" />
+          <ErrorMessage className="text-danger" name="name"  component="div"/>
+          <br />
+          <br />
+          <label>Enter age : </label>&nbsp;
+          <Field type="number" name="age" />
+          <ErrorMessage className="text-danger" name="age" component="div" />
+          <br />
+          <br />
+          <label>Enter password : </label>&nbsp;
+          <Field type="password" name="pass" />
+          <ErrorMessage className="text-danger" name="pass"  component="div"/>
+          <br />
+          <br />
+          <label>Gender :</label>&nbsp;&nbsp;&nbsp;
+          <label>Male</label>&nbsp;
+          <Field type="radio" name="gender" value="male" />
+          &nbsp;&nbsp;&nbsp;
+          <label>Female</label>&nbsp;
+          <Field type="radio" name="gender" value="female" />
+          <ErrorMessage className="text-danger" name="gender" component="div" />
+          <br />
+          <br />
+          <label>Hobbies : </label>&nbsp;&nbsp;&nbsp;
+          <label>Writing </label>&nbsp;&nbsp;
+          <Field type="checkbox" name="hobby" value="writing" />
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <label>Playing </label>&nbsp;&nbsp;
+          <Field type="checkbox" name="hobby" value="playing" />
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <label>Cricketing</label>&nbsp;&nbsp;
+          <Field type="checkbox" name="hobby" value="Cricketing" />
+          <ErrorMessage className="text-danger" name="hobby"  component="div"/>
+          <br />
+          <br />
+          <label>Country : </label>&nbsp;
+          <Field name="country" as="select">
+            <option>select</option>
+            <option value="Canada">Canada</option>
+            <option value="USA">Usa</option>
+            <option value="India">India</option>
+          </Field>
+          <ErrorMessage className="text-danger" name="country" component="div" />
+          <br />
+          <br />
+          <label>Comments : </label>&nbsp;
+          <Field as="textarea" name="comment" />
+          <ErrorMessage className="text-danger" name="comment" component="div" />
+          <br />
+          <br />
+          <button type="submit">Submit</button>
+        </Form>
+      </Formik>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;

@@ -11,6 +11,7 @@ import Doctors from "./component/Doctors";
 import Appointments from "./component/Appointments";
 import Layout from "./component/Layout";
 import Login from "./component/Login";
+import Form from "./component/Form";
 
 const App = () => {
  
@@ -25,7 +26,7 @@ const App = () => {
         <Route path="/about" element={<Layout> <About /> </Layout>} />
         <Route path="/contact" element={<Layout> <Contact /> </Layout>} />
         <Route path="/appointments" element={ <Layout> <Appointments /> </Layout>} />
-        <Route path="/login" element={ <Layout> <Login /> </Layout>} />
+        <Route path="/login" element={  <Login /> } />
       </Routes>
       
         
