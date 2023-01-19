@@ -11,16 +11,20 @@ import Doctors from "./component/Doctors";
 import Appointments from "./component/Appointments";
 import Layout from "./component/Layout";
 import Login from "./component/Login";
-import Form from "./component/Form";
+import FetchAPI from "./FetchAPI";
+
+
 
 const App = () => {
- 
+  
   return (
-    <div classname="App">
+    
+    <>
       
       
       <Routes> 
-        <Route path="/" element={<Layout> <Home /> </Layout>} />
+     
+        <Route path="/" element={<Layout>  <Home /><FetchAPI /> </Layout>} />
         <Route path="/Departments" element={<Layout> <Departments /> </Layout>} />
         <Route path="/Doctors" element={<Layout> <Doctors /> </Layout>} />
         <Route path="/about" element={<Layout> <About /> </Layout>} />
@@ -31,7 +35,7 @@ const App = () => {
       
         
         
-    </div>
+    </>
 
   );
 };
