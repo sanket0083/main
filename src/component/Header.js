@@ -32,9 +32,9 @@ const Header = () => {
                         <nav id="navbar" className="navbar order-last order-lg-0">
                             <ul>
                                 <li><Link to={"/"} className="nav-link scrollto active">Home</Link></li>
-                                <li><Link to={"/Departments"} className="nav-link scrollto" >Departments</Link></li>
+                                <li><Link to={"/Departments"} className="nav-link scrollto" >Jobs Requirements</Link></li>
                                 <li><Link to={"/Doctors"} className="nav-link scrollto" >Doctors</Link></li>
-                                <li><Link to={"/About"} className="nav-link scrollto " >About</Link></li>
+                                <li><Link to={"/About"} className="nav-link scrollto " >Appoinment</Link></li>
                                 <li><Link to={"/Contact"} className="nav-link scrollto" >Contact</Link></li>
                             </ul>
                             <i className="bi bi-list mobile-nav-toggle" />

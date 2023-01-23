@@ -49,36 +49,36 @@ function Login() {
             <label> name : </label>&nbsp;
             <Field
             
-              className={`login-input  ${touched.name && errors.name ? 'error' : ''}`}
+              className={`login-input form-control ${touched.name && errors.name ? 'error' : ''}`}
               type="text"
               name="name" />
             <ErrorMessage className="text-danger" name="name" component="div" />
 
-            <br /><br />
+            <br />
             <label> age : </label>&nbsp;
-            <Field className={`login-input ${touched.age && errors.age ? 'error' : ''}`}  type="number" name="age" />
+            <Field className={`login-input form-control ${touched.age && errors.age ? 'error' : ''}`}  type="number" name="age" />
             <ErrorMessage className="text-danger" name="age" component="div" />
 
             
-            <br /><br />
+            <br />
             <label> phone : </label>&nbsp;
-            <Field  className={`login-input  ${touched.phone && errors.phone ? 'error' : ''}`} type="number" name="phone" />
+            <Field  className={`login-input form-control ${touched.phone && errors.phone ? 'error' : ''}`} type="number" name="phone" />
             <ErrorMessage className="text-danger" name="phone" component="div" />
 
-            <br /><br />
+            <br />
             <label> password : </label>&nbsp;
             <Field 
-            className={`login-input ${touched.pass && errors.pass ? 'error' : ''}`}
+            className={`login-input form-control ${touched.pass && errors.pass ? 'error' : ''}`}
              type="password" name="pass" />
             <ErrorMessage className="text-danger" name="pass" component="div" />
 
-            <br /><br />
+            <br />
             <label>Gender :</label>&nbsp;&nbsp;&nbsp;
             <label>Male</label>&nbsp;
-            <Field type="radio" name="gender" value="male" />
+            <Field type="radio"  name="gender" value="male" />
             &nbsp;&nbsp;&nbsp;
             <label>Female</label>&nbsp;
-            <Field type="radio" name="gender" value="female" />
+            <Field type="radio"  name="gender" value="female" />
             <ErrorMessage className="text-danger" name="gender" component="div" />
             <br />
             <br />
@@ -95,7 +95,7 @@ function Login() {
             <br />
             <br />
             <label>Country : </label>&nbsp;
-            <Field name="country" as="select">
+            <Field name="country" as="select" className="form-control">
               <option>select</option>
               <option value="Canada">Canada</option>
               <option value="USA">Usa</option>
@@ -109,7 +109,7 @@ function Login() {
             <br />
             <br />
             <label>Comments : </label>&nbsp;
-            <Field as="textarea" name="comment" />
+            <Field as="textarea" name="comment" className="form-control" />
             <ErrorMessage
               className="text-danger"
               name="comment"

@@ -1,9 +1,102 @@
+import { ErrorMessage, Field, Form, Formik } from 'formik'
 import React from 'react'
+import '../App.css';
+import * as yup from 'yup';
+import "yup-phone";
+
 
 const Departments = () => {
+
+  const validations = yup.object({
+    name: yup.string().required(),
+    address: yup.string().required(),
+    email: yup.string().matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).required(),
+    pass: yup
+      .string()
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+        "Enter strong password"
+      )
+      .required(),
+    phone: yup.string().phone().required(),
+    cover: yup.string().max(500).required(),
+    data: yup.date().required(),
+    cv:yup.mixed().required(),
+    
+
+  })
+
   return (
-    <div>
-      <section id="departments" className="departments">
+    <div className="d-flex justify-content-center">
+
+      <Formik
+        validationSchema={validations}
+        initialValues={{ name: "", address: "", email: "", pass: "", phone: "", cover: "", data: "", cv: "" }}
+        onSubmit={(values) => {
+          console.log(values);
+        }}
+      >
+        {({ touched, errors }) => (
+          <Form>
+            
+            <h1 className="text-primary text-center mb-4 mt-3">Job Application</h1>
+            <label>Full Name : </label>&nbsp;&nbsp;
+            <Field className={`login-input form-control ${touched.name && errors.name ? 'error' : ''}`} type="text" name="name" />
+            <ErrorMessage className='text-danger' name='name' component='div' />
+            <br />
+
+            <label>Current Address :</label>&nbsp;&nbsp;
+            <Field className={`login-input form-control ${touched.address && errors.address ? 'error' : ''}`} type="text" name="address" />
+            <ErrorMessage className='text-danger' name='address' component='div' />
+            <br />
+
+            <label>Email :</label>&nbsp;&nbsp;
+            <Field className={`login-input form-control  ${touched.email && errors.email ? 'error' : ''}`} type="email"  name="email" />
+            
+            <ErrorMessage className='text-danger' name='email' component='div' />
+            <br />
+
+            <label>Password :</label>&nbsp;&nbsp;
+            <Field className={`login-input form-control ${touched.pass && errors.pass ? 'error' : ''}`} type="password" name="pass" />
+            <ErrorMessage className='text-danger' name='pass' component='div' />
+            <br />
+
+            <label>Phone Number :</label>&nbsp;&nbsp;
+            <Field className={`login-input form-control ${touched.phone && errors.phone ? 'error' : ''}`} type="number" name="phone" />
+            <ErrorMessage className='text-danger' name='phone' component='div' />
+            <br />
+
+            <label>Cover Letter :</label>&nbsp;&nbsp;
+            <Field className={`login-input form-control ${touched.cover && errors.cover ? 'error' : ''}`} as="textarea" name="cover" />
+            <ErrorMessage className='text-danger' name='cover' component='div' />
+            <br /><br />
+
+
+            <label>Earliest Possible Start Date :</label>&nbsp;&nbsp;
+            <Field type="date" name="date" className="form-control"/>
+            <ErrorMessage className='text-danger' name='date' component='div' />
+            <br /><br />
+
+            <label>Upload Resume :</label>&nbsp;&nbsp;
+            <Field type="file" className="form-control" name="cv" />
+            <ErrorMessage className='text-danger' name='cv' component='div' />
+            <br /><br />
+
+            <button type="submit" className="btn btn-primary ">Apply</button>
+
+          </Form>
+        )}
+      </Formik>
+
+
+
+
+    </div>
+  )
+}
+
+export default Departments
+{/* <section id="departments" className="departments">
   <div className="container">
     <div className="section-title">
       <h2>Departments</h2>
@@ -109,10 +202,4 @@ const Departments = () => {
       </div>
     </div>
   </div>
-</section>
-
-    </div>
-  )
-}
-
-export default Departments
+</section> */}
